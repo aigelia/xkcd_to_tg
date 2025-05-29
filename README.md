@@ -24,7 +24,7 @@ Then install dependencies:
 pip install -r requirements.txt
 ```
 
-Then, create an .env file in the root project directory and add the keys from .env.example file. 
+Then, create an .env file in the root project directory and add the keys from .env.example file. There are two environment variables: `TG_TOKEN` (token for Telegram bot which is necessary for auto publishing) and `CHAT_ID` (name of your Telegram channel where you are going to post comics).
 
 Generate your Telegram bot token via using [BotFather](https://telegram.me/BotFather), following simple instructions. Be sure that you added this bot as an administrator to channel where you are going to post comics. `CHAT_ID` is the name of your Telegram channel (e.g. @telegram_channel).
 
