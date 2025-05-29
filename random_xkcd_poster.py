@@ -9,18 +9,18 @@ def get_last_comics_num():
     url = 'https://xkcd.com/info.0.json'
     response = requests.get(url)
     response.raise_for_status()
-    data = response.json()
-    return data.get('num')
+    xkcd_last_comics_response = response.json()
+    return xkcd_last_comics_response.get('num')
 
 
 def fetch_comics(num):
     url = f'https://xkcd.com/{num}/info.0.json'
     response = requests.get(url)
     response.raise_for_status()
-    data = response.json()
+    xkcd_response = response.json()
 
-    image_link = data.get('img')
-    description = data.get('alt')
+    image_link = xkcd_response.get('img')
+    description = xkcd_response.get('alt')
 
     return image_link, description
 
