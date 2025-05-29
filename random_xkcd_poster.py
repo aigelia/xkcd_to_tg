@@ -25,14 +25,6 @@ def fetch_comics(num):
     return image_link, description
 
 
-def post_on_telegram(bot, chat_id, image_link, description):
-    try:
-        bot.send_photo(chat_id=chat_id, photo=image_link, caption=description)
-    except telegram.error.TelegramError as e:
-        print(f'Ошибка при публикации: {e}')
-    return print('Комикс опубликован!')
-
-
 def main():
     last_comics_num = get_last_comics_num()
     random_comics_num = random.randint(1, last_comics_num)
@@ -43,7 +35,11 @@ def main():
     chat_id = config('CHAT_ID')
     bot = telegram.Bot(token=tg_token)
 
-    post_on_telegram(bot, chat_id, image_link, description)
+    try:
+        bot.send_photo(chat_id=chat_id, photo=image_link, caption=description)
+        print('Комикс опубликован!')
+    except telegram.error.TelegramError as e:
+        print(f'Ошибка при публикации: {e}')
 
 
 if __name__ == '__main__':
